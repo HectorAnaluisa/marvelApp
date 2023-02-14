@@ -16,7 +16,7 @@ class CardWidget extends StatelessWidget {
         moreData();
       }
     });
-    final responsiveScreen = ResponsiveUtils(context);
+    final responsiveScreen = Responsive();
     return GridView.builder(
       itemCount: characters.length,
       controller: _gridController,

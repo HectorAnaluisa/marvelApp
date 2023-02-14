@@ -34,13 +34,13 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       loading = false;
     });
-    final responsiveScreen = ResponsiveUtils(context);
+    final responsiveScreen = Responsive();
     return Scaffold(
       body: loading? LoadingWidget() : SafeArea(child: _scrollPage(responsiveScreen, typeInfo)) //_scrollPage(context)  // 
     );
   }
 
-  Widget _scrollPage(ResponsiveUtils responsiveScreen, TypeInfo typeInfo) {
+  Widget _scrollPage(Responsive responsiveScreen, TypeInfo typeInfo) {
     return Column(
       children: [
         Container(

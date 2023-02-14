@@ -52,7 +52,7 @@ class _DetailsPageState extends State<DetailsPage> {
 
 
     
-    final responsiveScreen = ResponsiveUtils(context);
+    final responsiveScreen = Responsive();
     return Scaffold(
       body: loadingW ? LoadingWidget() : SingleChildScrollView(
         child: Column(
@@ -88,7 +88,7 @@ class _DetailsPageState extends State<DetailsPage> {
     );
   }
 
-  Widget _infoData(ResponsiveUtils responsiveScreen, TypeInfo typeInfo ,dynamic data) {
+  Widget _infoData(Responsive responsiveScreen, TypeInfo typeInfo ,dynamic data) {
     return Column(
       children: [
         SizedBox(height: responsiveScreen.hp(5),),
@@ -116,7 +116,7 @@ class _DetailsPageState extends State<DetailsPage> {
     );
   }
 
-  Widget _backGround(ResponsiveUtils responsiveScreen) {
+  Widget _backGround(Responsive responsiveScreen) {
     
     return Container(
       height: responsiveScreen.hp(40),
@@ -125,7 +125,7 @@ class _DetailsPageState extends State<DetailsPage> {
     );
   }
 
-  Widget _avatar(ResponsiveUtils responsiveScreen, String url) {
+  Widget _avatar(Responsive responsiveScreen, String url) {
     return Stack(
       children: [
         Positioned(

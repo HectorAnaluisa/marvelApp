@@ -9,7 +9,7 @@ class LoadingWidget extends StatelessWidget {
   Widget build(BuildContext context) {
 
     final typeInfo = Provider.of<TypeInfo>(context);
-    final responsiveScreen = ResponsiveUtils(context);
+    final responsiveScreen = Responsive();
 
     return Container(
       color: Colors.white,

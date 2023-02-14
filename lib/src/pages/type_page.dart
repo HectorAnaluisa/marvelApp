@@ -11,7 +11,7 @@ class TypePage extends StatelessWidget {
       body: Stack(
         children: [
           _middleScreen(context),
-          _middleScreenButtoms(context)
+          _middleScreenButtons(context)
         ],
       ),
     );
@@ -19,7 +19,9 @@ class TypePage extends StatelessWidget {
 
   Widget _middleScreen( BuildContext context ) {
 
-    final responsiveScreen = ResponsiveUtils(context);
+    Responsive().initResponsive(context);
+
+    final responsiveScreen = Responsive();
     final screenSize = MediaQuery.of(context).size;
 
     return Container(
@@ -67,13 +69,13 @@ class TypePage extends StatelessWidget {
           Positioned(
             top: responsiveScreen.hp(30),
             left: responsiveScreen.wp(50)/2/3,
-            child: Text('PERSONAJES', style: TextStyle(fontSize: 40, color: Colors.white, fontFamily: 'MvlRegular',fontWeight: FontWeight.w500),)
+            child: Text('PERSONAJES', style: TextStyle(fontSize: responsiveScreen.ip(5.0), color: Colors.white, fontFamily: 'MvlRegular',fontWeight: FontWeight.w500),)
           ),
 
           Positioned(
             bottom: responsiveScreen.hp(30),
             right: responsiveScreen.wp(50)/2/3,
-            child: Text('COMICS', style: TextStyle(fontSize: 60, color: Colors.black, fontFamily: 'MvlRegular'),)
+            child: Text('COMICS', style: TextStyle(fontSize: responsiveScreen.ip(5.0), color: Colors.black, fontFamily: 'MvlRegular'),)
           ),
 
           Positioned(
@@ -86,9 +88,9 @@ class TypePage extends StatelessWidget {
     );
   }
 
-  Widget _middleScreenButtoms(BuildContext context){
+  Widget _middleScreenButtons(BuildContext context){
     final typeInfo = Provider.of<TypeInfo>(context);
-    final responsiveScreen = ResponsiveUtils(context);
+    final responsiveScreen = Responsive();
 
     return Container(
       child: Center(
@@ -100,15 +102,13 @@ class TypePage extends StatelessWidget {
               child: Container(
                 height: responsiveScreen.hp(100),
                 width: responsiveScreen.wp(50),
-                child: RaisedButton(
-                  splashColor: Colors.blue,
+                child: ElevatedButton(
                   onPressed: (){
                     typeInfo.setLoadingColor = Colors.red[900];
                     typeInfo.setHeaderColor = [Colors.red, Colors.red[900]];
                     typeInfo.setTypeCharacter = 'characters';
                     Navigator.pushNamed(context, 'home');
-
-                  }
+                  }, child: null,
                 ),
               ),
             ),
@@ -117,9 +117,8 @@ class TypePage extends StatelessWidget {
               child: Container(
                 height: responsiveScreen.hp(100),
                 width: responsiveScreen.wp(49),
-                child: RaisedButton(
-                  highlightColor: Colors.transparent,
-                  splashColor: Colors.blue,
+                child: ElevatedButton(
+                  child: null,
                   onPressed: (){
                     typeInfo.setLoadingColor = Colors.black;
                     typeInfo.setTypeCharacter = 'comics';

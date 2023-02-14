@@ -18,11 +18,12 @@ class CardComicWidget extends StatelessWidget {
     });
 
 
-    final responsiveScreen = ResponsiveUtils(context); 
+    final responsiveScreen = Responsive();
     return GridView.builder(
       controller: _gridController,
       itemCount: comics.length,
       padding: EdgeInsets.all(30),
+      physics: const BouncingScrollPhysics(),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, crossAxisSpacing: 30, mainAxisSpacing: 40), 
       itemBuilder: (BuildContext context, int index){
         return GestureDetector(
@@ -54,8 +55,14 @@ class CardComicWidget extends StatelessWidget {
                     SizedBox(height: responsiveScreen.hp(1.5),),
                     Container(
                       width: responsiveScreen.wp(35),
-                      height: responsiveScreen.hp(5),
-                      child: Text(comics[index].title, style: TextStyle(color: Colors.white, fontFamily: 'MvlRegular', fontSize: responsiveScreen.ip(2)), textAlign: TextAlign.center,) ,
+                      child: Text(
+                        comics[index].title,
+                        overflow: TextOverflow.ellipsis ,
+                        style: TextStyle(color: Colors.white,
+                        fontFamily: 'MvlRegular',
+                        fontSize: responsiveScreen.ip(2)
+                      ),
+                      textAlign: TextAlign.center,) ,
                     ),
                   ],
                 ),

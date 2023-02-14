@@ -8,7 +8,7 @@ class CustomContainer extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-    final responsiveScreen = ResponsiveUtils(context);
+    final responsiveScreen = Responsive();
     return Material(
       elevation: 0,
       child: Container(

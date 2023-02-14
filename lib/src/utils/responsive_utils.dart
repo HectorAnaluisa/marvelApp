@@ -9,6 +9,7 @@ class Responsive {
   Responsive._internal();
 
   double _width, _height, _inch;
+  static const int maxPercent = 100;
 
   void initResponsive (BuildContext context){
     final size = MediaQuery.of(context).size;
@@ -18,15 +19,15 @@ class Responsive {
   }
 
   double wp(double percent) {
-    return _width * percent / 100;
+    return _width * percent / maxPercent;
   }
 
   double hp(double percent) {
-    return _height * percent / 100;
+    return _height * percent / maxPercent;
   }
 
   double ip(double percent) {
-    return _inch * percent / 100;
+    return _inch * percent / maxPercent;
   }
 
   double hpConsolidatedPosition(double ra) {
